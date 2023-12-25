@@ -23,6 +23,14 @@ public class CalculatorTest {
             throw new AssertionError("Ошибка в методе");
         }
 
+        // Проверка для ДЗ 1:
+        assertThat(Calculator.calculatingDiscount(1000,50)).isEqualTo(500);
+        assertThat(Calculator.calculatingDiscount(500,25)).isEqualTo(375);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(-700, 15)).isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(8000, 180)).isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(7500, -10)).isInstanceOf(ArithmeticException.class);
+
+
         // Случаи с неправильными аргументами
         // аргумент operator типа char, должен вызывать исключение, если он получает не базовые символы (+-*/)
         // try {
@@ -50,8 +58,8 @@ public class CalculatorTest {
 //                Calculator.calculation(8, 4, '_')
 //        ).isInstanceOf(IllegalStateException.class);
 
-        System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
-        System.out.println(Calculator.squareRootExtraction(169));
+//        System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
+//        System.out.println(Calculator.squareRootExtraction(169));
 
         // Примерные решения домашних заданий из 1 лекции:
 
